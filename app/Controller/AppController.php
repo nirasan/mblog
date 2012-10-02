@@ -48,7 +48,7 @@ class AppController extends Controller {
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
         $user_id = $this->Auth->user('id');
-        $user = $this->User->findById($user_id);
-        $this->set('user', $user);
+        $this->user = $this->User->findById($user_id);
+        $this->set('user', $this->user);
     }
 }
