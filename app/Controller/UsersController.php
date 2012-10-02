@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
-    public $uses = array('Word');
+    public $uses = array('User', 'Word');
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -36,7 +36,7 @@ class UsersController extends AppController {
  */
 	public function index() {
 		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
+		$this->set('users', $this->paginate('User'));
 	}
 
 /**
