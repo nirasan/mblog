@@ -7,6 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
+    public $uses = array('Word');
+
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('add');
@@ -50,6 +52,12 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		$this->set('user', $this->User->read(null, $id));
+
+        $this->paginate = array(
+            'limit' => 10,
+        );
+        $words = $this->paginate('Word', array('Word.user_id' => array($this->user['User']['id'])));
+        $this->set('words', $words);
 	}
 
 /**
