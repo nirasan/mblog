@@ -13,6 +13,9 @@ class WordsController extends AppController {
  * @return void
  */
 	public function index() {
+        $this->paginate = array(
+            'order' => array('id' => 'desc'),
+        );
 		$this->Word->recursive = 0;
 		$this->set('words', $this->paginate());
 	}
