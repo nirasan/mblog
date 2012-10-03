@@ -42,9 +42,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
             <?php if ($user): ?>
                 <?php echo $user['User']['username']; ?>
-                <?php echo $this->Form->postLink( 'Logout', array('action' => 'logout'), array('confirm' => 'Are you sure?') ); ?>
+                <?php echo $this->Form->postLink( 'Logout', array('controller' => 'users', 'action' => 'logout'), array('confirm' => 'Are you sure?') ); ?>
             <?php else: ?>
-                <?php echo $this->Html->link( 'Login', array('action' => 'login') ); ?>
+                <?php echo $this->Html->link( 'Login', array('controller' => 'users', 'action' => 'login') ); ?>
             <?php endif; ?>
 		</div>
 		<div id="content">
