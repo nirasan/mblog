@@ -56,32 +56,6 @@ class WordsController extends AppController {
 	}
 
 /**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		$this->Word->id = $id;
-		if (!$this->Word->exists()) {
-			throw new NotFoundException(__('Invalid word'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Word->save($this->request->data)) {
-				$this->Session->setFlash(__('The word has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The word could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->Word->read(null, $id);
-		}
-		$users = $this->Word->User->find('list');
-		$this->set(compact('users'));
-	}
-
-/**
  * delete method
  *
  * @throws MethodNotAllowedException

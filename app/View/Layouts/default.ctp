@@ -40,18 +40,29 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<div id="container">
 		<div id="header">
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-            <?php if ($user): ?>
-                <?php echo $user['User']['username']; ?>
-                <?php echo $this->Form->postLink( 'Logout', array('controller' => 'users', 'action' => 'logout'), array('confirm' => 'Are you sure?') ); ?>
-            <?php else: ?>
-                <?php echo $this->Html->link( 'Login', array('controller' => 'users', 'action' => 'login') ); ?>
-            <?php endif; ?>
 		</div>
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
+            
+            <div class="actions">
+                <h3><?php echo __('Actions'); ?></h3>
+                <ul>
+                    <li><?php echo $this->Html->link(__('Recent Word'), array('controller' => 'words', 'action' => 'index')); ?> </li>
+                    <li><?php echo $this->Html->link(__('New Word'), array('controller' => 'words', 'action' => 'add')); ?> </li>
+                    <li><?php echo $this->Html->link(__('All User'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+                    <?php if ($user): ?>
+                        <li>
+                        <?php echo $user['User']['username']; ?>
+                        <?php echo $this->Form->postLink( 'Logout', array('controller' => 'users', 'action' => 'logout'), array('confirm' => 'Are you sure?') ); ?>
+                        </li>
+                    <?php else: ?>
+                        <li><?php echo $this->Html->link( 'Login', array('controller' => 'users', 'action' => 'login') ); ?></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
 		</div>
 		<div id="footer">
 			<?php echo $this->Html->link(

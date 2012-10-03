@@ -9,4 +9,5 @@
         ?>
     </fieldset>
     <?php echo $this->Form->end(__('Login')); ?>
+    <p><?php echo $this->Html->link(__('Register User'), array('action' => 'add')); ?></p>
 </div>
